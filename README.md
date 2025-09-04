@@ -158,3 +158,7 @@ uv run python test_api.py
 ```
 
 The test script will verify all endpoints and documentation routes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
