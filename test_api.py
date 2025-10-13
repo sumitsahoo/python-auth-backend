@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for the NSS Auth Backend FastAPI
+Test script for the Sample Auth Backend FastAPI
 """
 
 import requests

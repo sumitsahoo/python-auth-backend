@@ -1,4 +1,4 @@
-# NSS Auth Backend
+# Sample Auth Backend
 
 A FastAPI application with Microsoft Azure AD token validation using the authlib library.
 
