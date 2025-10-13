@@ -14,7 +14,7 @@ load_dotenv()
 
 # FastAPI app instance
 app = FastAPI(
-    title="Sample Auth Backend",
+    title="Python Auth Backend",
     description="A FastAPI application with Microsoft Azure AD token validation",
     version="1.0.0",
     docs_url="/docs",  # Swagger UI at /docs
@@ -161,7 +161,7 @@ async def validate_microsoft_token(
 )
 async def health_check():
     """Health check endpoint that doesn't require authentication"""
-    return HealthResponse(status="healthy", service="sample-auth-backend")
+    return HealthResponse(status="healthy", service="python-auth-backend")
 
 
 @app.get(
@@ -213,7 +213,7 @@ def main():
     """Run the FastAPI application"""
     import uvicorn
 
-    print("🚀 Starting sample-auth-backend FastAPI...")
+    print("🚀 Starting python-auth-backend FastAPI...")
     print("📋 Available endpoints:")
     print("  GET /api/health - Health check (no auth required)")
     print("  GET /api/helloworld - Hello World (requires valid Microsoft token)")

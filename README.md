@@ -1,8 +1,8 @@
-# Sample Auth Backend
+# 🔐 Python Auth Backend
 
 A FastAPI application with Microsoft Azure AD token validation using the authlib library.
 
-## Setup
+## 🚀 Setup
 
 1. **Configure Environment Variables**
    
@@ -25,7 +25,77 @@ A FastAPI application with Microsoft Azure AD token validation using the authlib
    uv run python main.py
    ```
 
-## API Endpoints
+## 🐋 Docker
+
+### Building the Docker Image
+
+Build the Docker image using the included Dockerfile:
+
+```bash
+docker build -t python-auth-backend .
+```
+
+### Running the Container
+
+Run the container with environment variables:
+
+```bash
+docker run -d \
+  -p 5000:5000 \
+  -e AZURE_CLIENT_ID=your_client_id_here \
+  -e AZURE_TENANT_ID=your_tenant_id_here \
+  --name auth-backend \
+  python-auth-backend
+```
+
+Or use an `.env` file:
+
+```bash
+docker run -d \
+  -p 5000:5000 \
+  --env-file .env \
+  --name auth-backend \
+  python-auth-backend
+```
+
+### Docker Image Details
+
+The Dockerfile uses a multi-stage build:
+- **Builder stage**: Uses Python 3.14-slim with uv for fast dependency installation
+- **Runtime stage**: Minimal Python 3.14-slim image with only the compiled application
+- **Port**: Exposes port 5000
+- **Working directory**: `/app`
+- **Entrypoint**: Runs the FastAPI application using the virtual environment's Python
+
+### Docker Commands Reference
+
+```bash
+# Build the image
+docker build -t python-auth-backend .
+
+# Run the container
+docker run -d -p 5000:5000 --env-file .env --name auth-backend python-auth-backend
+
+# View container logs
+docker logs auth-backend
+
+# Follow container logs
+docker logs -f auth-backend
+
+# Stop the container
+docker stop auth-backend
+
+# Remove the container
+docker rm auth-backend
+
+# Remove the image
+docker rmi python-auth-backend
+
+# Access container shell
+docker exec -it auth-backend /bin/bash
+```
+
+## 🌐 API Endpoints
 
 ### Public Endpoints (No Authentication Required)
 
@@ -36,13 +106,13 @@ A FastAPI application with Microsoft Azure AD token validation using the authlib
 
 - `GET /api/helloworld` - Hello World endpoint that requires valid Microsoft token
 
-### Documentation Endpoints
+### 📚 Documentation Endpoints
 
 - `GET /docs` - Interactive Swagger UI documentation
 - `GET /redoc` - ReDoc documentation
 - `GET /openapi.json` - OpenAPI schema
 
-## Usage
+## 💡 Usage
 
 ### Testing the Protected Endpoint
 
@@ -58,7 +128,7 @@ A FastAPI application with Microsoft Azure AD token validation using the authlib
 
 Note: If running with uv, use `uv run python main.py` to start the server.
 
-### Interactive API Documentation
+### 📖 Interactive API Documentation
 
 FastAPI automatically generates interactive documentation:
 
@@ -71,7 +141,7 @@ FastAPI automatically generates interactive documentation:
    - Clean, three-panel documentation
    - Better for reading API specifications
 
-### Getting a Microsoft Token
+### 🔑 Getting a Microsoft Token
 
 To get a Microsoft token for testing, you can:
 
@@ -83,7 +153,7 @@ To get a Microsoft token for testing, you can:
 
 2. Or use the Microsoft Graph Explorer or Azure Portal to generate a token.
 
-## Features
+## ✨ Features
 
 - ✅ **Fast Performance** - Built on FastAPI/Starlette for high performance
 - ✅ **Automatic Documentation** - Interactive Swagger UI and ReDoc
@@ -96,7 +166,7 @@ To get a Microsoft token for testing, you can:
 - ✅ **Clean dependency injection** for token validation
 - ✅ **Comprehensive error handling**
 
-## FastAPI Benefits
+## ⚡ FastAPI Benefits
 
 - **Better Performance** - 2-3x faster than Flask
 - **Automatic API Documentation** - No need to write docs manually
@@ -104,7 +174,7 @@ To get a Microsoft token for testing, you can:
 - **Modern Python** - Async/await support
 - **Industry Standard** - OpenAPI/JSON Schema compliance
 
-## Security
+## 🔒 Security
 
 The application validates Microsoft tokens by:
 1. Checking the Authorization header format (Bearer token)
@@ -113,7 +183,7 @@ The application validates Microsoft tokens by:
 4. Validating the issuer and audience claims
 5. Extracting user information from validated tokens
 
-## Development
+## 🛠️ Development
 
 ### Using uv for Package Management
 
@@ -150,7 +220,7 @@ uv pip show package_name       # Show package information
 uv lock                        # Update the lock file
 ```
 
-### Testing
+### 🧪 Testing
 
 Run tests:
 ```bash
@@ -159,6 +229,6 @@ uv run python test_api.py
 
 The test script will verify all endpoints and documentation routes.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
